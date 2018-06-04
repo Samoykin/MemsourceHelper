@@ -10,7 +10,7 @@
         /// <param name="s">Строка перевода.</param>
         /// <param name="lang">Направление перевода.</param>
         /// <returns>Переведенный текст.</returns>
-        public string Translate(string s, string lang)
+        public static string Translate(string s, string lang)
         {
             if (s.Length > 0)
             {
@@ -25,7 +25,7 @@
                     string line;
                     if ((line = stream.ReadLine()) != null)
                     {
-                        s = line.Substring(line.IndexOf(":[\"") + 3).Remove(s.Length - 3);
+                        s = line.Substring(line.IndexOf(":[\"") + 3);
                         s = s.Remove(s.Length - 3);
                     }
                 }

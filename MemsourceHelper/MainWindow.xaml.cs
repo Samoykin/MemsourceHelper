@@ -1,29 +1,51 @@
 ﻿namespace MemsourceHelper
-{    
+{
     using System;
+    using System.IO;
     using System.Reflection;
     using System.Threading.Tasks;
     using System.Windows;
     using NLog;
-
+    using Utils;
+    using static Model.Shell;
+    
     /// <summary>Interaction logic for MainWindow.xaml.</summary>
     public partial class MainWindow : Window
     {
+        private const string SettingsPath = "Settings.xml";
         private const string Enru = "en-ru";
         private const string Ruen = "ru-en";
         private const int Quantity = 1000000;
 
         private bool flag;
         private Logger logger = LogManager.GetCurrentClassLogger();
-        private XMLParser parcer;        
+        private XMLParser parcer;
+        private RootElement settings = new RootElement(); // Конфигурация 
 
         /// <summary>Initializes a new instance of the <see cref="MainWindow" /> class.</summary>
         public MainWindow()
         {
             this.InitializeComponent();
             this.logger.Info("Запуск программы Memsource Helper.");
-            this.parcer = new XMLParser(this.logger);            
-            this.Title = "Memsource Helper v" + Assembly.GetExecutingAssembly().GetName().Version;
+                       
+            this.Title = $"Memsource Helper v{Assembly.GetExecutingAssembly().GetName().Version}";
+
+            // Вычитывание параметров из XML
+            // Инициализация модели настроек
+            var settingsXml = new SettingsXml<RootElement>(SettingsPath);
+            this.settings.Api = new Api();
+
+            if (!File.Exists(SettingsPath))
+            {
+                this.settings = this.SetDefaultValue(this.settings); // Значения по умолчанию
+                settingsXml.WriteXml(this.settings);
+            }
+            else
+            {
+                this.settings = settingsXml.ReadXml(this.settings);
+            }
+
+            this.parcer = new XMLParser(this.logger, this.settings);
         }
 
         /// <summary>Перевод файла.</summary>
@@ -52,7 +74,7 @@
 
             if (this.flag == false)
             {
-                tb4.Text = "Идет перевод";
+                tbStatus.Text = "Идет перевод";
                 this.logger.Info("Запущен процесс перевода файла.");
                 btnTranslate.IsEnabled = false;
             }
@@ -67,12 +89,12 @@
                     btnTranslate.IsEnabled = true;
                     if (this.flag == true)
                     {
-                        tb4.Text = "Перевод закончен";
+                        tbStatus.Text = "Перевод закончен";
                         this.logger.Info("Закончен перевод файла.");
                     }
                     else
                     {
-                        tb4.Text = "Ошибка перевода";
+                        tbStatus.Text = "Ошибка перевода";
                     }
                 }
                 catch (Exception ex)
@@ -84,6 +106,13 @@
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.TranslateFile();
+        }
+
+        private RootElement SetDefaultValue(RootElement set)
+        {
+            set.Api.Key = "trnsl.1.1.20161209T160045Z.8690ab398b294afe.7d2ec8f5ed14fa9b98c9b7faa9d3dbb8f88943dc";            
+
+            return set;
         }
     }
 }

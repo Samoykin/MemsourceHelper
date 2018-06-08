@@ -40,6 +40,10 @@
     <ApplicationIcon>Resources\tr.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.5.6\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
@@ -68,9 +72,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ReplaceManager.cs" />
-    <Compile Include="XMLParser.cs" />
-    <Compile Include="YandexTranslator.cs" />
+    <Compile Include="Model\Settings.cs" />
+    <Compile Include="Model\Translation.cs" />
+    <Compile Include="Utils\ReplaceManager.cs" />
+    <Compile Include="Utils\SettingsXml.cs" />
+    <Compile Include="Utils\XMLParser.cs" />
+    <Compile Include="Utils\YandexTranslator.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

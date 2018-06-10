@@ -1,23 +1,22 @@
-﻿namespace MemsourceHelper
+﻿namespace MemsourceHelper.Utils
 {
     using System.IO;
     using System.Linq;
     using System.Xml;
     using NLog;
-    using Utils;
     using static Model.Shell;    
 
     /// <summary>Менеджер переводов.</summary>
-    public class XMLParser
+    public class XmlParser
     {
         private Logger logger;
         private YandexTranslator translator;
-        private RootElement settings = new RootElement();
+        private RootElement settings;
 
-        /// <summary>Initializes a new instance of the <see cref="XMLParser" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="XmlParser" /> class.</summary>
         /// <param name="logger">Логгер.</param>
         /// <param name="settings">Параметры.</param>
-        public XMLParser(Logger logger, RootElement settings)
+        public XmlParser(Logger logger, RootElement settings)
         {
             this.logger = logger;
             this.settings = settings;
@@ -29,7 +28,6 @@
         /// <returns>Состояние.</returns>
         public bool Parse(string lang, int cellQuantity)
         {
-            var newTarget = string.Empty;
             var count = 0;
 
             var filePath = Directory.GetFiles(Directory.GetCurrentDirectory(), "*.mxliff").FirstOrDefault();
@@ -47,9 +45,9 @@
                         var targetNode = node["trans-unit"];
                         if (targetNode != null)
                         {
-                            if (string.IsNullOrEmpty(targetNode["target"].InnerText))
+                            if (string.IsNullOrEmpty(targetNode["target"]?.InnerText))
                             {
-                                newTarget = this.translator.Translate(ReplaceManager.ReplaceSigns(targetNode["source"].InnerText), lang);
+                                var newTarget = this.translator.Translate(ReplaceManager.ReplaceSigns(targetNode["source"]?.InnerText), lang);
 
                                 if (lang == "en-ru")
                                 {

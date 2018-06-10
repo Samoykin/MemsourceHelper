@@ -72,11 +72,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\Settings.cs" />
+    <Compile Include="Model\Shell.cs" />
     <Compile Include="Model\Translation.cs" />
     <Compile Include="Utils\ReplaceManager.cs" />
     <Compile Include="Utils\SettingsXml.cs" />
-    <Compile Include="Utils\XMLParser.cs" />
+    <Compile Include="Utils\XmlParser.cs" />
     <Compile Include="Utils\YandexTranslator.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

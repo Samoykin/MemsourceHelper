@@ -2,14 +2,12 @@
 {
     using System.IO;
     using System.Xml.Serialization;
-    using NLog;
 
     /// <summary>Параметры XML.</summary>
     /// <typeparam name="T">Тип.</typeparam>
     public class SettingsXml<T>
     {
-        private Logger logger = LogManager.GetCurrentClassLogger();
-        private string path;
+        private readonly string path;
 
         /// <summary>Initializes a new instance of the <see cref="SettingsXml{T}" /> class.</summary>
         /// <param name="path">Путь к файлу.</param>

@@ -1,7 +1,7 @@
-﻿namespace MemsourceHelper
+﻿namespace MemsourceHelper.Utils
 {
-    using System;
     using System.Globalization;
+    using System.Linq;
     using System.Text.RegularExpressions;
 
     /// <summary>Менеджер замены символов.</summary>
@@ -13,17 +13,12 @@
         public static string ReplaceSigns(string text)
         {
             var newText = text;
-            MatchCollection matches = null;
-
             var re = new Regex(@"\{\d+\}|\[●\]|\{j\}|\{1\>|\<1\}|\{i\>\/|\/\<i\}|\{i\>|\<i\}|\{b\>|\<b\}|\{\d\>|\<\d\}|\{u\>|\<u\}|\{bu\>|\<bu\}|(?:\s(\s+?)|\#)");
 
             while (re.IsMatch(newText))
             {
-                matches = re.Matches(newText);
-                foreach (Match textMatch in matches)
-                {
-                    newText = re.Replace(newText, string.Empty);
-                }
+                var matches = re.Matches(newText);
+                newText = matches.Cast<Match>().Aggregate(newText, (current, textMatch) => re.Replace(current, string.Empty));
             }
 
             return newText;
@@ -35,18 +30,8 @@
         public static string RuFormatNumber(string text)
         {
             var styles = NumberStyles.Float | NumberStyles.AllowThousands;
-
             double number;
-            CultureInfo provider;
-
-            if ((styles & NumberStyles.AllowCurrencySymbol) > 0)
-            {
-                provider = new CultureInfo("en-US");
-            }
-            else
-            {
-                provider = CultureInfo.InvariantCulture;
-            }
+            var provider = (styles & NumberStyles.AllowCurrencySymbol) > 0 ? new CultureInfo("en-US") : CultureInfo.InvariantCulture;
 
             if (double.TryParse(text, styles, provider, out number))
             {

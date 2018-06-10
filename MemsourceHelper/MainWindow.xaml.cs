@@ -9,6 +9,7 @@
     using Utils;
     using static Model.Shell;
     
+    /// <inheritdoc />
     /// <summary>Interaction logic for MainWindow.xaml.</summary>
     public partial class MainWindow : Window
     {
@@ -19,10 +20,11 @@
 
         private bool flag;
         private Logger logger = LogManager.GetCurrentClassLogger();
-        private XMLParser parcer;
+        private XmlParser parcer;
         private RootElement settings = new RootElement(); // Конфигурация 
 
-        /// <summary>Initializes a new instance of the <see cref="MainWindow" /> class.</summary>
+        /// <inheritdoc />
+        /// <summary>Initializes a new instance of the <see cref="T:MemsourceHelper.MainWindow" /> class.</summary>
         public MainWindow()
         {
             this.InitializeComponent();
@@ -45,23 +47,15 @@
                 this.settings = settingsXml.ReadXml(this.settings);
             }
 
-            this.parcer = new XMLParser(this.logger, this.settings);
+            this.parcer = new XmlParser(this.logger, this.settings);
         }
 
         /// <summary>Перевод файла.</summary>
-        public async void TranslateFile()
+        private async void TranslateFile()
         {
-            string lang;
             int cellQuantity;
 
-            if (rbEnRu.IsChecked == true)
-            {
-                lang = Enru;
-            }
-            else
-            {
-                lang = Ruen;
-            }
+            var lang = rbEnRu.IsChecked == true ? Enru : Ruen;
 
             if (string.IsNullOrEmpty(tbQuantity.Text) || tbQuantity.Text == "0")
             {
@@ -72,7 +66,7 @@
                 cellQuantity = int.Parse(tbQuantity.Text);
             }
 
-            if (this.flag == false)
+            if (!this.flag)
             {
                 tbStatus.Text = "Идет перевод";
                 this.logger.Info("Запущен процесс перевода файла.");
@@ -81,13 +75,10 @@
 
                 try
                 {
-                this.flag = await Task<bool>.Factory.StartNew(() =>
-                    {                        
-                        return parcer.Parse(lang, cellQuantity);
-                    });
+                    this.flag = await Task<bool>.Factory.StartNew(() => this.parcer.Parse(lang, cellQuantity));
 
                     btnTranslate.IsEnabled = true;
-                    if (this.flag == true)
+                    if (this.flag)
                     {
                         tbStatus.Text = "Перевод закончен";
                         this.logger.Info("Закончен перевод файла.");

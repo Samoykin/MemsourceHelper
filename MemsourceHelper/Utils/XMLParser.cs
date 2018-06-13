@@ -4,7 +4,7 @@
     using System.Linq;
     using System.Xml;
     using NLog;
-    using static Model.Shell;    
+    using static Model.SettingsShell;    
 
     /// <summary>Менеджер переводов.</summary>
     public class XmlParser

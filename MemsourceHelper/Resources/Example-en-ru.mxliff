@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns:m="http://www.memsource.com/mxlf/2.0" xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2" m:version="2.1" m:level="1">
+  <file original="11186_Annual_report_Essar_Oil_Ltd_E (Часть 1).docx" source-language="en" target-language="ru" datatype="x-undefined" m:task-id="G1PU5ixoIb7yql9I0_dc3">
+    <body>
+      <group id="1">
+        <context-group>
+          <context context-type="x-file-part">word/document.xml::body</context>
+        </context-group>
+        <trans-unit id="G1PU5ixoIb7yql9I0_dc3:1" m:para-id="1" xml:space="preserve" m:trans-origin="null" m:score="0" m:gross-score="0" m:confirmed="0" m:locked="false" m:level-edited="false" m:created-by="4762" m:created-at="1481289592681" m:modified-by="4762" m:modified-at="1481290316591">
+<source>12,232.56</source>
+<target></target>
+<alt-trans origin="machine-trans">
+<target></target>
+</alt-trans>
+<alt-trans origin="memsource-tm">
+<target></target>
+</alt-trans>
+<m:tunit-metadata />
+<m:tunit-target-metadata />
+<m:editing-stats>
+<m:thinking-time>0</m:thinking-time>
+<m:editing-time>0</m:editing-time>
+</m:editing-stats>
+</trans-unit>
+      </group>
+      <group id="2">
+        <context-group>
+          <context context-type="x-file-part">word/document.xml::body</context>
+        </context-group>
+        <trans-unit id="G1PU5ixoIb7yql9I0_dc3:2" m:para-id="2" xml:space="preserve" m:trans-origin="null" m:score="0" m:gross-score="0" m:confirmed="0" m:locked="false" m:level-edited="false" m:created-by="4762" m:created-at="1481289592682" m:modified-by="4762" m:modified-at="1481290316592">
+<source>POSITIVITY</source>
+<target></target>
+<alt-trans origin="machine-trans">
+<target></target>
+</alt-trans>
+<alt-trans origin="memsource-tm">
+<target></target>
+</alt-trans>
+<m:tunit-metadata />
+<m:tunit-target-metadata />
+<m:editing-stats>
+<m:thinking-time>0</m:thinking-time>
+<m:editing-time>0</m:editing-time>
+</m:editing-stats>
+</trans-unit>
+      </group>
+      <group id="3">
+        <context-group>
+          <context context-type="x-file-part">word/document.xml::body</context>
+        </context-group>
+        <trans-unit id="G1PU5ixoIb7yql9I0_dc3:3" m:para-id="3" xml:space="preserve" m:trans-origin="null" m:score="0" m:gross-score="0" m:confirmed="0" m:locked="false" m:level-edited="false" m:created-by="4762" m:created-at="1481289592683" m:modified-by="4762" m:modified-at="1481290316593">
+<source>PASSION</source>
+<target></target>
+<alt-trans origin="machine-trans">
+<target></target>
+</alt-trans>
+<alt-trans origin="memsource-tm">
+<target></target>
+</alt-trans>
+<m:tunit-metadata />
+<m:tunit-target-metadata />
+<m:editing-stats>
+<m:thinking-time>0</m:thinking-time>
+<m:editing-time>0</m:editing-time>
+</m:editing-stats>
+</trans-unit>
+      </group>
+    </body>
+  </file>
+  <m:extra>
+    <m:users>
+      <m:user id="4762" username="Lister" fullname="Dave Lister" />
+    </m:users>
+  </m:extra>
+</xliff>

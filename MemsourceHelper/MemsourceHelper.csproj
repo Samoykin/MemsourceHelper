@@ -72,7 +72,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\Shell.cs" />
+    <Compile Include="Model\SettingsShell.cs" />
     <Compile Include="Model\Translation.cs" />
     <Compile Include="Utils\ReplaceManager.cs" />
     <Compile Include="Utils\SettingsXml.cs" />
@@ -122,6 +122,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Resources\Example-en-ru.mxliff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

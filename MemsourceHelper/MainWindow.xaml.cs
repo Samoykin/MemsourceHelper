@@ -7,7 +7,7 @@
     using System.Windows;
     using NLog;
     using Utils;
-    using static Model.Shell;
+    using static Model.SettingsShell;
     
     /// <inheritdoc />
     /// <summary>Interaction logic for MainWindow.xaml.</summary>
